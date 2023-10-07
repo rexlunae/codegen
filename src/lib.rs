@@ -1,30 +1,7 @@
 pub use proc_macro2::TokenStream;
 
-/// A trait for AST elements that represent a position in a source file.
-pub trait Node {
-    /// A method for getting the starting line number of the node. This may not exist for all node types.
-    fn lineno(&self) -> Option<usize> {
-        None
-    }
-
-    /// A method for getting the starting column of the node. This may not exist for all node types.
-    fn col_offset(&self) -> Option<usize> {
-        None
-    }
-
-    /// A method for getting the ending line number of the node. This may not exist for all node types.
-    fn end_lineno(&self) -> Option<usize> {
-        None
-    }
-
-    /// A method for getting the ending column of the node. This may not exist for all node types.
-    fn end_col_offset(&self) -> Option<usize> {
-        None
-    }
-}
-
 /// A trait for an object that can be converted to Rust code. Any data structure implementing this trait can be converted into a proc_macro2::TokenStream.
-pub trait CodeGen: std::fmt::Debug + Node {
+pub trait CodeGen: std::fmt::Debug {
 
     /// A type, generally an enum, that passes the code generator the context of the node.
     type Context;
