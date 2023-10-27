@@ -5,6 +5,7 @@ edition = "2021"
 description = "An interface for creating a compiler within a Rust macro."
 license = "Apache 2.0"
 license_file = "LICENSE"
+repository = "https://github.com/rexlunae/to_tokenstream.git"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
