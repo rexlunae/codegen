@@ -6,7 +6,7 @@
 pub use proc_macro2::TokenStream;
 
 /// A trait for an object that can be converted to Rust code. Any data structure implementing this trait can be converted into a proc_macro2::TokenStream.
-pub trait CodeGen: std::fmt::Debug {
+pub trait CodeGen: std::fmt::Debug + Clone {
 
     /// A type, generally an enum, that passes the code generator the context of the node.
     type Context;
