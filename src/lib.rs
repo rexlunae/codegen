@@ -17,6 +17,12 @@ pub trait CodeGen: std::fmt::Debug + Clone {
     /// A trait for a symbol table
     type SymbolTable;
 
+    /// A default implementation for find_symbols(), which simply returns the input.
+    /// Language nodes that modify the symbol table should override this method.
+    fn find_symbols(self, symbols_in: Self::SymbolTable) -> Self::SymbolTable {
+        symbols_in
+    }
+
     /// A trait method to output Rust code in a general sense. The output should be stream of Rust tokens,
     /// however, it is not guaranteed that it will fully compile because of scoping errors and other checks
     /// that don't occur until later.
