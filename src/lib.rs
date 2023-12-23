@@ -14,10 +14,13 @@ pub trait CodeGen: std::fmt::Debug + Clone {
     /// A struct representing the set of compilation options.
     type Options;
 
+    /// A trait for a symbol table
+    type SymbolTable;
+
     /// A trait method to output Rust code in a general sense. The output should be stream of Rust tokens,
     /// however, it is not guaranteed that it will fully compile because of scoping errors and other checks
     /// that don't occur until later.
-    fn to_rust(self, ctx: Self::Context, options: Self::Options) -> Result<TokenStream, Box<dyn std::error::Error>>;
+    fn to_rust(self, ctx: Self::Context, options: Self::Options, symbols: Self::SymbolTable) -> Result<TokenStream, Box<dyn std::error::Error>>;
 
     /// A trait method for extracting a docstring from an object that can have a docstring.
     fn get_docstring(&self) -> Option<String> {
